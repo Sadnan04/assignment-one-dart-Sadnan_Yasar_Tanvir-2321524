@@ -31,13 +31,14 @@ abstract class Vehicle {
 
   // Concrete method
   void displayInfo() {
+    print("Vehicle Info: $year $brand $model");
     // TODO: Display vehicle information
   }
 
   // Add a method to calculate vehicle age (current year - vehicle year)
   int calculateAge() {
     // TODO: Calculate and return vehicle age
-    return 0;
+    return DateTime.now().year - year;
   }
 }
 
@@ -53,16 +54,19 @@ class Car extends Vehicle {
 
   @override
   void start() {
+    print("Starting the car engine...");
     // TODO: Implement car start method
   }
 
   @override
   void stop() {
+    print("Stopping the car engine...");
     // TODO: Implement car stop method
   }
 
   @override
   void displayInfo() {
+    print("Vehicle Info: $year $brand $model ($numberOfDoors doors)");
     // TODO: Override to show car-specific info as shown in expected output
   }
 }
@@ -78,25 +82,38 @@ class Motorcycle extends Vehicle {
 
   @override
   void start() {
+    print("Starting the motorcycle engine...");
     // TODO: Implement motorcycle start method
   }
 
   @override
   void stop() {
+    print("Stopping the motorcycle engine...");
     // TODO: Implement motorcycle stop method
   }
 
   @override
   void displayInfo() {
+    print("Vehicle Info: $year $brand $model (Has windshield: $hasWindshield)");
     // TODO: Override to show motorcycle-specific info as shown in expected output
   }
 }
 
 void main() {
+  List<Vehicle> vehicles = [Car("Toyota", "Corolla", 2022, 12), Motorcycle("Honda", "Yamaha", 2017, true)];
+
+    
   // 3. Create a list of vehicles and demonstrate polymorphism by calling start(), stop(), and displayInfo() on each vehicle
   // TODO: Create a list containing one Car and one Motorcycle
 
   // TODO: Loop through the list and call displayInfo(), start(), and stop()
-
+for (Vehicle vehicle in vehicles) {
+    vehicle.displayInfo();
+    vehicle.start();
+    vehicle.stop();
+    print("");
+  }
   // TODO: Print the age of each vehicle using calculateAge()
+  print("Car age: ${vehicles[0].calculateAge()} years");
+  print("Motorcycle age: ${vehicles[1].calculateAge()} years");
 }
